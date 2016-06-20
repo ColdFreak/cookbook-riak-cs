@@ -15,7 +15,7 @@ bash "install_riak_cs_from_packagecloud" do
 end
 
 template "/etc/riak-cs/riak-cs.conf" do
-  source
+  source "default/riak-cs.conf.erb"
   owner 'root'
   group 'root'
   mode '0644'
@@ -23,6 +23,17 @@ template "/etc/riak-cs/riak-cs.conf" do
     :ip => node['ipaddress'],
     :admin_key => node['riak-cs']['admin_key'],
     :admin_secret => node['riak-cs']['admin_secret']
+  })
+end
+
+
+template "/etc/riak-cs/advanced.conf" do
+  source "default/advanced.config.erb"
+  owner 'root'
+  group 'root'
+  mode '0644'
+  variables({
+    :cs_root_host => node['riak-cs']['cs_root_host']
   })
 
 end
