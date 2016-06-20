@@ -9,7 +9,7 @@
 bash "install_riak_cs_from_packagecloud" do
   code <<-EOH
   curl -s https://packagecloud.io/install/repositories/basho/riak-cs/script.rpm.sh | bash
-  yum install riak-cs-#{node['riak-cs']['major_number']}.#{node['riak-cs']['minor_number']}.#{node['riak-cs']['incremental']}-#{node['riak-cs']['build']}.el7.centos.x86_64
+  yum install riak-cs-#{node['riak-cs']['major_number']}.#{node['riak-cs']['minor_number']}.#{node['riak-cs']['incremental']}-#{node['riak-cs']['build']}.el7.centos.x86_64 -y
   EOH
   not_if "which riak-cs"
 end
