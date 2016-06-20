@@ -24,4 +24,23 @@ template "/etc/riak-cs/riak-cs.conf" do
     :admin_key => node['riak-cs']['admin_key'],
     :admin_secret => node['riak-cs']['admin_secret']
   })
+
+end
+
+service "riak" do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable, :start, :restart]
+  only_if "which riak"
+end
+
+service "stanchion" do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable, :start, :restart]
+  only_if "which stanchion"
+end
+
+service "riak-cs" do
+  supports :status => true, :restart => true, :reload => true
+  action [:enable, :start, :restart]
+  only_if "which riak-cs"
 end
