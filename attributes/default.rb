@@ -5,3 +5,5 @@ default['riak-cs']['build'] = "1"
 
 default['riak-cs']['admin_key'] = "admin-key"
 default['riak-cs']['admin_secret'] = "admin-secret"
+
+default['riak-cs']['cs_root_host'] = ""
