@@ -22,7 +22,8 @@ template "/etc/riak-cs/riak-cs.conf" do
   variables({
     :ip => node['ipaddress'],
     :admin_key => node['riak-cs']['admin_key'],
-    :admin_secret => node['riak-cs']['admin_secret']
+    :admin_secret => node['riak-cs']['admin_secret'],
+    :root_host => node['riak-cs']['root_host']
   })
 end
 
@@ -32,10 +33,6 @@ template "/etc/riak-cs/advanced.conf" do
   owner 'root'
   group 'root'
   mode '0644'
-  variables({
-    :cs_root_host => node['riak-cs']['cs_root_host']
-  })
-
 end
 
 service "riak" do
